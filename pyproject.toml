@@ -1,0 +1,42 @@
+[project]
+name = "ipodyssey"
+version = "0.1.0"
+description = "Extract and understand music data from iPod Video devices"
+authors = [{name = "Mark Preston", email = "admin@lavabyrd.space"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "mutagen>=1.47.0",
+    "construct>=2.10.70",
+    "click>=8.1.7",
+    "rich>=13.7.0",
+    "pandas>=2.2.0",
+    "tqdm>=4.66.1",
+]
+
+[project.scripts]
+ipodyssey = "ipodyssey.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["ipodyssey"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "W", "I", "N", "B", "C90"]
+ignore = ["E501"]  # Line length handled by black
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+

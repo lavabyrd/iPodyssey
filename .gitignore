@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# iPod data (never commit actual music files)
+data/local_copy/
+*.mp3
+*.m4a
+*.mp4
+*.aac
+*.wav
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.nvim/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output files
+output/
+exports/
+*.csv
+*.json
+*.m3u
+*.m3u8
+data/*
+
+# Logs
+*.log
+logs/
+
+# Local config
+config.local.json
+.env

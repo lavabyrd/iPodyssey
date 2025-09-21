@@ -1,0 +1,9 @@
+# This file is for reference only - use uv for dependency management
+# Run: uv pip install -e .
+
+mutagen>=1.47.0
+construct>=2.10.70
+click>=8.1.7
+rich>=13.7.0
+pandas>=2.2.0
+tqdm>=4.66.1
