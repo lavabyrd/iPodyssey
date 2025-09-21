@@ -285,6 +285,7 @@ Create an AppImage for universal Linux compatibility:
 
 ## 📸 Screenshots
 
+### Terminal UI
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║
@@ -309,3 +310,14 @@ Searching for iPod devices...
 │                                                │
 ╰────────────────────────────────────────────────╯
 ```
+
+### Desktop GUI
+
+<img width="600" alt="iPodyssey GUI showing iPod detection and extraction options" src="https://github.com/user-attachments/assets/gui-screenshot-placeholder">
+
+The GUI provides an intuitive interface with:
+- Automatic iPod detection with device information display
+- Multiple extraction modes (Database Only, Scan Files Only, Both)
+- Format selection for exports (CSV, JSON, M3U, Text Report)
+- Real-time progress tracking during extraction
+- Browse button for easy output directory selection
