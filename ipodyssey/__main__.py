@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-"""
-CLI interface for iPodyssey.
-"""
+"""Main entry point for iPodyssey."""
 
 import sys
-from main import main
+from .main import main
 
 if __name__ == "__main__":
     sys.exit(main())

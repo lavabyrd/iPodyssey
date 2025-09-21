@@ -129,6 +129,96 @@ class TestCopyDatabaseFiles:
             assert "iTunesDB" in copied
 
 
+class TestDetectIpodModel:
+    """Test iPod model detection functionality."""
+
+    def test_detect_from_extended_sysinfo(self):
+        """Test detection from ExtendedSysInfoXml."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create iPod structure with ExtendedSysInfoXml
+            device_dir = os.path.join(temp_dir, "iPod_Control", "Device")
+            os.makedirs(device_dir)
+
+            # Create ExtendedSysInfoXml with video codecs
+            extended_info = """<?xml version="1.0" encoding="UTF-8"?>
+            <dict>
+                <key>VideoCodecs</key>
+                <dict>
+                    <key>H264</key>
+                    <true/>
+                </dict>
+            </dict>"""
+
+            with open(os.path.join(device_dir, "ExtendedSysInfoXml"), 'w') as f:
+                f.write(extended_info)
+
+            # Create Photos folder to indicate video model
+            os.makedirs(os.path.join(temp_dir, "Photos"))
+
+            # Mock statvfs to return 80GB capacity
+            with patch('os.statvfs') as mock_statvfs:
+                mock_stat = MagicMock()
+                mock_stat.f_blocks = 156301488  # ~80GB
+                mock_stat.f_frsize = 512
+                mock_statvfs.return_value = mock_stat
+
+                model = copier.detect_ipod_model(temp_dir)
+                assert "iPod Video" in model
+                assert "80GB" in model
+
+    def test_detect_from_sysinfo(self):
+        """Test detection from SysInfo file."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create iPod structure with SysInfo
+            device_dir = os.path.join(temp_dir, "iPod_Control", "Device")
+            os.makedirs(device_dir)
+
+            # Create SysInfo with model number
+            with open(os.path.join(device_dir, "SysInfo"), 'w') as f:
+                f.write("ModelNumStr: MA448\n")
+
+            model = copier.detect_ipod_model(temp_dir)
+            assert "iPod Video" in model
+            assert "80GB" in model
+
+    def test_detect_corrupted_sysinfo(self):
+        """Test handling of corrupted SysInfo."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create structure with wrong SysInfo but correct features
+            device_dir = os.path.join(temp_dir, "iPod_Control", "Device")
+            os.makedirs(device_dir)
+
+            # Create corrupted SysInfo (wrong model)
+            with open(os.path.join(device_dir, "SysInfo"), 'w') as f:
+                f.write("ModelNumStr: MA002\n")  # 1st gen model
+
+            # But has video features
+            extended_info = """<dict><key>VideoCodecs</key><dict></dict></dict>"""
+            with open(os.path.join(device_dir, "ExtendedSysInfoXml"), 'w') as f:
+                f.write(extended_info)
+
+            os.makedirs(os.path.join(temp_dir, "Photos"))
+
+            # Should detect as Video model, not 1st gen
+            with patch('os.statvfs') as mock_statvfs:
+                mock_stat = MagicMock()
+                mock_stat.f_blocks = 156301488  # 80GB
+                mock_stat.f_frsize = 512
+                mock_statvfs.return_value = mock_stat
+
+                model = copier.detect_ipod_model(temp_dir)
+                assert "iPod Video" in model
+
+    def test_detect_unknown_model(self):
+        """Test detection when model cannot be determined."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create minimal iPod structure
+            os.makedirs(os.path.join(temp_dir, "iPod_Control", "Music"))
+
+            model = copier.detect_ipod_model(temp_dir)
+            assert "Unknown" in model or "classic structure" in model
+
+
 class TestGetIpodInfo:
     """Test iPod information extraction."""
 
@@ -168,6 +258,23 @@ class TestGetIpodInfo:
             assert info["total_music_files"] == 50  # 5 folders * 10 files
             assert info["database_found"] is True
             assert info["database_size"] == 104  # 4 bytes header + 100 bytes
+
+    def test_get_info_with_model_detection(self):
+        """Test that get_ipod_info includes model detection."""
+        with tempfile.TemporaryDirectory() as temp_dir:
+            # Create basic iPod structure
+            device_dir = os.path.join(temp_dir, "iPod_Control", "Device")
+            os.makedirs(device_dir)
+
+            # Add SysInfo for model detection
+            with open(os.path.join(device_dir, "SysInfo"), 'w') as f:
+                f.write("ModelNumStr: MA450\n")  # 5.5 gen 30GB
+
+            info = copier.get_ipod_info(temp_dir)
+
+            assert "model" in info
+            assert "iPod Video" in info["model"]
+            assert "5.5 gen" in info["model"]
 
 
 class TestMainIntegration:
