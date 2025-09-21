@@ -288,23 +288,24 @@ Create an AppImage for universal Linux compatibility:
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║
-║  🎵  iPodyssey - iPod Music Liberation Tool  🎵         ║
+║      iPodyssey - iPod Music Liberation Tool             ║
 ║                                                          ║
-║  Extract your music collection from classic iPods       ║
-║  Support for iPod Video and other classic models        ║
+║      Extract your music collection from classic iPods   ║
+║      Support for iPod Video and other classic models    ║
 ║                                                          ║
 ╚══════════════════════════════════════════════════════════╝
 
-🔍 Searching for iPod devices...
+Searching for iPod devices...
 
-         iPod Detected
-╭───────────────┬─────────────────╮
-│ Property      │ Value           │
-├───────────────┼─────────────────┤
-│ Path          │ /Volumes/iPod   │
-│ Name          │ iPod            │
-│ Database      │ ✓ Found (18 MB) │
-│ Music Folders │ 50              │
-│ Music Files   │ 12,159          │
-╰───────────────┴─────────────────╯
+╭──────────────── iPod Detected ─────────────────╮
+│                                                │
+│  Device Information                            │
+│  ──────────────────                            │
+│  Path          : /Volumes/iPod                 │
+│  Name          : iPod                          │
+│  Database      : Found (18 MB)                 │
+│  Music Folders : 50                            │
+│  Music Files   : 12,159                        │
+│                                                │
+╰────────────────────────────────────────────────╯
 ```
