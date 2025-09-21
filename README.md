@@ -145,66 +145,46 @@ jj log
 
 ## 🚀 Quick Start
 
-### macOS/Linux
 ```bash
-# Clone the repository
+# Clone and setup
 git clone https://github.com/lavabyrd/iPodyssey.git
 cd iPodyssey
-
-# Install dependencies with uv
 uv venv
 uv pip install -e .
 
-# Run the interactive TUI
+# Run Terminal UI
 uv run python -m ipodyssey
+
+# Run Desktop GUI
+uv run python -m ipodyssey.gui
 ```
 
-### Windows
-```powershell
-# Clone the repository
-git clone https://github.com/lavabyrd/iPodyssey.git
-cd iPodyssey
+The app will guide you through:
+1. **Connect your iPod** via USB
+2. **Auto-detection** finds your device
+3. **Choose extraction mode** - Database, file scan, or both
+4. **Select export format** - CSV, JSON, M3U, or text
+5. **Extract** your music and playlists
 
-# Install dependencies with uv
-uv venv
-uv pip install -e .
+### System Requirements
 
-# Run the interactive TUI
-uv run python -m ipodyssey
-```
+- **Python**: 3.13+ required
+- **iPod**: Classic models (Video, Photo, Mini, Nano)
+- **Format**: FAT32 formatted iPods work best
 
-### Platform-specific Notes
+### Platform Notes
 
-#### Python Installation
-- **macOS**: Install Python 3.13+ via Homebrew: `brew install python@3.13`
-- **Windows**: Download from [python.org](https://python.org) (3.13+)
-- **Linux**: Use your package manager or [pyenv](https://github.com/pyenv/pyenv)
+**macOS**
+- iPods mount at `/Volumes/IPOD_NAME`
+- Install Python via Homebrew: `brew install python@3.13`
 
-#### iPod Mount Locations
-- **macOS**: `/Volumes/IPOD_NAME`
-- **Linux**: `/media/username/IPOD_NAME` or `/mnt/IPOD_NAME`
-- **Windows**: Drive letter (e.g., `E:\`)
+**Windows**
+- iPods appear as drive letters (e.g., `E:\`)
+- Enable disk mode on iPod if not detected
 
-#### Linux Dependencies
-May need to install development packages:
-```bash
-# Ubuntu/Debian
-sudo apt-get install python3-dev python3-tk
-
-# Fedora/RHEL
-sudo dnf install python3-devel python3-tkinter
-```
-
-### Windows-specific Notes
-- iPod appears as a drive letter (e.g., `E:\`)
-- Ensure iPod is formatted as FAT32 (not HFS+)
-- May need to enable disk mode on the iPod
-
-The TUI will guide you through:
-1. **Device selection** - Auto-detects connected iPods
-2. **Extraction mode** - Choose database, file scan, or both
-3. **Output format** - Select CSV, JSON, M3U, or text report
-4. **Destination** - Pick where to save extracted data
+**Linux**
+- iPods mount at `/media/username/IPOD_NAME`
+- Install tkinter: `sudo apt install python3-tk` (Ubuntu/Debian)
 
 ## 🧪 Testing
 
