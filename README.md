@@ -4,6 +4,46 @@
 
 Extract music, playlists, and metadata from classic iPod devices with a beautiful terminal interface.
 
+## 📸 Screenshots
+
+### Terminal UI
+```
+╔══════════════════════════════════════════════════════════╗
+║                                                          ║
+║      iPodyssey - iPod Music Liberation Tool              ║
+║                                                          ║
+║      Extract your music collection from classic iPods    ║
+║      Support for iPod Video and other classic models     ║
+║                                                          ║
+╚══════════════════════════════════════════════════════════╝
+
+Searching for iPod devices...
+
+╭──────────────── iPod Detected ─────────────────╮
+│                                                │
+│  Device Information                            │
+│  ──────────────────                            │
+│  Path          : /Volumes/iPod                 │
+│  Name          : iPod                          │
+│  Database      : Found (18 MB)                 │
+│  Music Folders : 50                            │
+│  Music Files   : 12,159                        │
+│                                                │
+╰────────────────────────────────────────────────╯
+```
+
+### Desktop GUI
+
+<img width="912" height="744" alt="image" src="https://github.com/user-attachments/assets/e04903f9-90fd-444e-aa6c-30b3b0cc2f0f" />
+
+
+The GUI provides an intuitive interface with:
+- Automatic iPod detection with device information display
+- Multiple extraction modes (Database Only, Scan Files Only, Both)
+- Format selection for exports (CSV, JSON, M3U, Text Report)
+- Real-time progress tracking during extraction
+- Browse button for easy output directory selection
+
 ## ✨ Features
 
 - 🔍 **Auto-detection** of connected iPod devices across macOS, Linux, and Windows
@@ -262,42 +302,3 @@ Create an AppImage for universal Linux compatibility:
 ```bash
 # See https://appimage.org/ for AppImageKit setup
 ```
-
-## 📸 Screenshots
-
-### Terminal UI
-```
-╔══════════════════════════════════════════════════════════╗
-║                                                          ║
-║      iPodyssey - iPod Music Liberation Tool              ║
-║                                                          ║
-║      Extract your music collection from classic iPods    ║
-║      Support for iPod Video and other classic models     ║
-║                                                          ║
-╚══════════════════════════════════════════════════════════╝
-
-Searching for iPod devices...
-
-╭──────────────── iPod Detected ─────────────────╮
-│                                                │
-│  Device Information                            │
-│  ──────────────────                            │
-│  Path          : /Volumes/iPod                 │
-│  Name          : iPod                          │
-│  Database      : Found (18 MB)                 │
-│  Music Folders : 50                            │
-│  Music Files   : 12,159                        │
-│                                                │
-╰────────────────────────────────────────────────╯
-```
-
-### Desktop GUI
-
-<img width="600" alt="iPodyssey GUI showing iPod detection and extraction options" src="https://github.com/user-attachments/assets/gui-screenshot-placeholder">
-
-The GUI provides an intuitive interface with:
-- Automatic iPod detection with device information display
-- Multiple extraction modes (Database Only, Scan Files Only, Both)
-- Format selection for exports (CSV, JSON, M3U, Text Report)
-- Real-time progress tracking during extraction
-- Browse button for easy output directory selection
