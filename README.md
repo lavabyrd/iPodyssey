@@ -288,10 +288,10 @@ Create an AppImage for universal Linux compatibility:
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║
-║     iPodyssey - iPod Music Liberation Tool              ║
+║      iPodyssey - iPod Music Liberation Tool              ║
 ║                                                          ║
-║     Extract your music collection from classic iPods    ║
-║     Support for iPod Video and other classic models     ║
+║      Extract your music collection from classic iPods    ║
+║      Support for iPod Video and other classic models     ║
 ║                                                          ║
 ╚══════════════════════════════════════════════════════════╝
 
